@@ -24,17 +24,17 @@ space = {
 
 def get_params():
 
-	params = sample( space )
+	params = sample( space , seed = 1)
 	return handle_integers( params )
 
 #
 
 def try_params( n_iterations, params ):
-	
+
 	n_estimators = int( round( n_iterations * trees_per_iteration ))
 	print "n_estimators:", n_estimators
 	pprint( params )
-	
+
 	clf = RF( n_estimators = n_estimators, verbose = 0, n_jobs = -1, **params )
 
 	return train_and_eval_sklearn_classifier( clf, data )
